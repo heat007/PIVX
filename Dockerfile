@@ -1,37 +1,38 @@
 FROM debian:jessie
-MAINTAINER kost - https://github.com/kost
+MAINTAINER heat007 - https://github.com/heat007
 
-ENV PIVX_VERSION=3.0.6 \
- PIVX_USER=pivx
-ENV PIVX_URL=https://github.com/PIVX-Project/PIVX/releases/download/v$PIVX_VERSION/pivx-$PIVX_VERSION-x86_64-linux-gnu.tar.gz \
- PIVX_CONF=/home/$PIVX_USER/.pivx/pivx.conf
+ENV COLX_VERSION=1.0.0 \
+ COLX_USER=colx
+
+ENV COLX_URL=https://github.com/ColossusCoinXT/ColossusCoinXT/releases/download/v$COLX_VERSION/ColossusCoinXT-$COLX_VERSION-x86_64-linux-gnu.tar.gz \
+ COLX_CONF=/home/$COLX_USER/.colx/ColossusCoinXT.conf
 
 RUN apt-get -qq update && \
 apt-get install -yq wget ca-certificates pwgen && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-wget $PIVX_URL -O /tmp/pivx.tar.gz && \
+wget $COLX_URL -O /tmp/colx.tar.gz && \
 mkdir -p /opt && \
 cd /opt && \
-tar xvzf /tmp/pivx.tar.gz && \
-rm /tmp/pivx.tar.gz && \
-ln -sf pivx-$PIVX_VERSION pivx && \
-ln -sf /opt/pivx/bin/pivxd /usr/local/bin/pivxd && \
-ln -sf /opt/pivx/bin/pivx-cli /usr/local/bin/pivx-cli && \
-ln -sf /opt/pivx/bin/pivx-tx /usr/local/bin/pivx-tx && \
-adduser --uid 1000 --system ${PIVX_USER} && \
-mkdir -p /home/${PIVX_USER}/.pivx/ && \
-chown -R ${PIVX_USER} /home/${PIVX_USER} && \
-echo "success: $PIVX_CONF"
+tar xvzf /tmp/colx.tar.gz && \
+rm /tmp/colx.tar.gz && \
+ln -sf colx-$COLX_VERSION pivx && \
+ln -sf /opt/colx/bin/colxd /usr/local/bin/colxxd && \
+ln -sf /opt/colx/bin/colx-cli /usr/local/bin/colx-cli && \
+ln -sf /opt/colx/bin/colx-tx /usr/local/bin/colx-tx && \
+adduser --uid 1000 --system ${COLX_USER} && \
+mkdir -p /home/${COLX_USER}/.colx/ && \
+chown -R ${COLX_USER} /home/${COLX_USER} && \
+echo "success: $COLX_CONF"
 
 USER pivx
-RUN echo "rpcuser=pivx" > ${PIVX_CONF} && \
-	echo "rpcpassword=`pwgen 32 1`" >> ${PIVX_CONF} && \
+RUN echo "rpcuser=colx" > ${COLX_CONF} && \
+	echo "rpcpassword=`pwgen 32 1`" >> ${COLX_CONF} && \
 	echo "Success"
 
 EXPOSE 51472
-VOLUME ["/home/pivx/.pivx"]
-WORKDIR /home/pivx
+VOLUME ["/home/colx/.colx"]
+WORKDIR /home/colx
 
-ENTRYPOINT ["/usr/local/bin/pivxd"]
+ENTRYPOINT ["/usr/local/bin/colx"]
 
 
