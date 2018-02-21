@@ -15,7 +15,7 @@ mkdir -p /opt && \
 cd /opt && \
 tar xvzf /tmp/colx.tar.gz && \
 rm /tmp/colx.tar.gz && \
-ln -sf colx-$COLX_VERSION pivx && \
+ln -sf colx-$COLX_VERSION colx && \
 ln -sf /opt/colx/bin/colxd /usr/local/bin/colxxd && \
 ln -sf /opt/colx/bin/colx-cli /usr/local/bin/colx-cli && \
 ln -sf /opt/colx/bin/colx-tx /usr/local/bin/colx-tx && \
@@ -33,6 +33,6 @@ EXPOSE 51472
 VOLUME ["/home/colx/.colx"]
 WORKDIR /home/colx
 
-ENTRYPOINT ["/usr/local/bin/colx"]
+ENTRYPOINT ["/usr/local/bin/colxd"]
 
 
