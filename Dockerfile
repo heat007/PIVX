@@ -24,7 +24,7 @@ mkdir -p /home/${COLX_USER}/.colx/ && \
 chown -R ${COLX_USER} /home/${COLX_USER} && \
 echo "success: $COLX_CONF"
 
-USER pivx
+USER colx
 RUN echo "rpcuser=colx" > ${COLX_CONF} && \
 	echo "rpcpassword=`pwgen 32 1`" >> ${COLX_CONF} && \
 	echo "Success"
