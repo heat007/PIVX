@@ -1,10 +1,10 @@
-# pivx
-Dockerized pivx
+# colx
+Dockerized colx
 
 # Examples
 
-docker -p 51472:51472 -v /host/pivx/dir:/home/pivx/.pivx --name pivx dok3r/pivx
+docker -p 51472:51472 -v /host/colx/dir:/home/colx/.colx --name colx dok3r/colx
 
-docker exec -it pivx /bin/bash
+docker exec -it colx /bin/bash
 
 
