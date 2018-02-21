@@ -16,7 +16,7 @@ cd /opt && \
 tar xvzf /tmp/colx.tar.gz && \
 rm /tmp/colx.tar.gz && \
 ln -sf colx-$COLX_VERSION colx && \
-ln -sf /opt/colx/bin/colxd /usr/local/bin/colxxd && \
+ln -sf /opt/colx/bin/colxd /usr/local/bin/colxd && \
 ln -sf /opt/colx/bin/colx-cli /usr/local/bin/colx-cli && \
 ln -sf /opt/colx/bin/colx-tx /usr/local/bin/colx-tx && \
 adduser --uid 1000 --system ${COLX_USER} && \
